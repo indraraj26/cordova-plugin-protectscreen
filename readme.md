@@ -6,7 +6,7 @@
 `cordova plugin add cordova-plugin-protectscreen`
 
 ## Usage
-When a screenshot occurs (iOS), a 'UserDidTakeScreenshot' event is triggered .
+When a screenshot occurs on iOS, a 'UserDidTakeScreenshot' event is triggered .
 ```
 document.addEventListener("UserDidTakeScreenshot", function() {
     window.alert("Screenshot Taken");
@@ -14,3 +14,7 @@ document.addEventListener("UserDidTakeScreenshot", function() {
 ```
 ## License 
 MIT.
+
+## Credit
+
+Tommy-Carlos Williams (http://github.com/devgeeks)
