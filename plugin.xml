@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-protectscreen" version="1.0.0">
+   <name>ProtectScreen</name>
+   <js-module name="ProtectScreen" src="www/ProtectScreen.js">
+      <clobbers target="cordova.plugins.ProtectScreen" />
+   </js-module>
+   <platform name="android">
+      <config-file parent="/*" target="res/xml/config.xml">
+         <feature name="ProtectScreen">
+            <param name="android-package" value="cordova-plugin-protectscreen.ProtectScreen" />
+         </feature>
+      </config-file>
+      <config-file parent="/*" target="AndroidManifest.xml" />
+      <source-file src="src/android/ProtectScreen.java" target-dir="src/cordova-plugin-protectscreen/ProtectScreen" />
+   </platform>
+   <platform name="ios">
+      <config-file parent="/*" target="config.xml">
+         <feature name="ProtectScreen">
+            <param name="ios-package" value="ProtectScreen" />
+         </feature>
+      </config-file>
+      <source-file src="src/ios/ProtectScreen.m" />
+   </platform>
+</plugin>
