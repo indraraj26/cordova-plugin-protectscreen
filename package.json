@@ -1,0 +1,28 @@
+{
+  "name": "protectscreen",
+  "version": "1.0.0",
+  "description": "`cordova plugin add cordova-plugin-protectscreen`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patwaswapnil/cordova-plugin-protectscreen.git"
+  },
+  "keywords": [
+    "cordova",
+    "ionic",
+    "prevent",
+    "screenshot",
+    "and",
+    "screen",
+    "recording"
+  ],
+  "author": "Swapnil Patwa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/patwaswapnil/cordova-plugin-protectscreen/issues"
+  },
+  "homepage": "https://github.com/patwaswapnil/cordova-plugin-protectscreen#readme"
+}
