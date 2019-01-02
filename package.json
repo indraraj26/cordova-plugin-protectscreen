@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-protectscreen",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "cordova plugin add cordova-plugin-protectscreen",
   "main": "index.js",
   "scripts": {

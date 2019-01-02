@@ -12,6 +12,13 @@ static UIImageView *imageView;
 
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppWillResignActive:)
                                                name:UIApplicationWillResignActiveNotification object:nil];
+  
+    if (@available(iOS 11.0, *)) {
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(capturedChange)
+                                               name:UIScreenCapturedDidChangeNotification object:nil];
+    }
+
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
             NSOperationQueue *mainQueue = [NSOperationQueue mainQueue];
@@ -31,6 +38,39 @@ static UIImageView *imageView;
                         }
                       }];
         }
+}
+
+- (void)capturedChange {
+
+    if (@available(iOS 11.0, *)) {
+        NSLog(@"Recording Status: %s", [UIScreen mainScreen].isCaptured ? "true" : "false");
+        if ([UIScreen mainScreen].isCaptured) {
+            NSLog(@"RECORDING IS ON");
+              if ([self.webView respondsToSelector:@selector(stringByEvaluatingJavaScriptFromString:)]) {
+                            // UIWebView
+                            [self.webView performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:@"cordova.fireDocumentEvent('ScreenCaptureDidChange', {isRecording: true});" waitUntilDone:NO];
+                        } else if ([self.webView respondsToSelector:@selector(evaluateJavaScript:completionHandler:)]) {
+                            // WKWebView
+                            [self.webView performSelector:@selector(evaluateJavaScript:completionHandler:) withObject:@"cordova.fireDocumentEvent('ScreenCaptureDidChange', {isRecording: true});" withObject:nil];
+                        } else {
+                            // cordova lib version is > 4
+                            [self.commandDelegate evalJs:@"cordova.fireDocumentEvent('ScreenCaptureDidChange', {isRecording: true});" ];
+                        }
+        } else {
+            NSLog(@"RECORDING IS OFF");
+             if ([self.webView respondsToSelector:@selector(stringByEvaluatingJavaScriptFromString:)]) {
+                            // UIWebView
+                            [self.webView performSelectorOnMainThread:@selector(stringByEvaluatingJavaScriptFromString:) withObject:@"cordova.fireDocumentEvent('ScreenCaptureDidChange', {isRecording: false});" waitUntilDone:NO];
+                        } else if ([self.webView respondsToSelector:@selector(evaluateJavaScript:completionHandler:)]) {
+                            // WKWebView
+                            [self.webView performSelector:@selector(evaluateJavaScript:completionHandler:) withObject:@"cordova.fireDocumentEvent('ScreenCaptureDidChange', {isRecording: false});" withObject:nil];
+                        } else {
+                            // cordova lib version is > 4
+                            [self.commandDelegate evalJs:@"cordova.fireDocumentEvent('ScreenCaptureDidChange', {isRecording: false});" ];
+                        }
+        } 
+    }
+
 }
 
 - (void)onAppDidBecomeActive:(UIApplication *)application
