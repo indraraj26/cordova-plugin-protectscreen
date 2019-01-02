@@ -1,5 +1,5 @@
-// var exec = require('cordova/exec');
+var exec = require('cordova/exec');
 
-// exports.coolMethod = function (arg0, success, error) {
-//     exec(success, error, 'ProtectScreen', 'coolMethod', [arg0]);
-// };
+exports.isRecording = function (success, error) {
+    exec(success, error, 'ProtectScreen', 'isRecording', []);
+};
