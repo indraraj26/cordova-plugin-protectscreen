@@ -12,7 +12,12 @@ static UIImageView *imageView;
 
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppWillResignActive:)
                                                name:UIApplicationWillResignActiveNotification object:nil];
-   
+  if (@available(iOS 11.0, *)) {
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(capturedChange)
+                                               name:UIScreenCapturedDidChangeNotification object:nil];
+    }
+
 
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
