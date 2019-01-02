@@ -12,14 +12,7 @@ static UIImageView *imageView;
 
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppWillResignActive:)
                                                name:UIApplicationWillResignActiveNotification object:nil];
-  
-    if (@available(iOS 11.0, *)) {
-        if ([UIScreen mainScreen].isCaptured) {
-                [self capturedChange];
-        }
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(capturedChange)
-                                               name:UIScreenCapturedDidChangeNotification object:nil];
-    }
+   
 
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -41,6 +34,17 @@ static UIImageView *imageView;
                       }];
         }
 }
+
+- (void)isRecording:(CDVInvokedUrlCommand*)command
+{
+    BOOL isVideoRecording = NO;
+    if (@available(iOS 11.0, *)) {
+        isVideoRecording = [UIScreen mainScreen].isCaptured;
+    }
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:isVideoRecording];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 
 - (void)capturedChange {
 
