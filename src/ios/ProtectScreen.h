@@ -14,6 +14,6 @@ typedef struct {
   
 } CDV_iOSDevice;
 
-@interface PrivacyScreenPlugin : CDVPlugin
+@interface ProtectScreen : CDVPlugin
 
 @end
