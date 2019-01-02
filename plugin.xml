@@ -8,17 +8,21 @@
       <config-file parent="/*" target="res/xml/config.xml">
          <feature name="ProtectScreen">
             <param name="android-package" value="cordova-plugin-protectscreen.ProtectScreen" />
+            <param name="onload" value="true" />
          </feature>
       </config-file>
       <config-file parent="/*" target="AndroidManifest.xml" />
       <source-file src="src/android/ProtectScreen.java" target-dir="src/cordova-plugin-protectscreen/ProtectScreen" />
    </platform>
+
    <platform name="ios">
       <config-file parent="/*" target="config.xml">
          <feature name="ProtectScreen">
             <param name="ios-package" value="ProtectScreen" />
+            <param name="onload" value="true" />
          </feature>
       </config-file>
+      <header-file src="src/ios/ProtectScreen.h"/>
       <source-file src="src/ios/ProtectScreen.m" />
    </platform>
 </plugin>
