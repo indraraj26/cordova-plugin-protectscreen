@@ -14,7 +14,9 @@ static UIImageView *imageView;
                                                name:UIApplicationWillResignActiveNotification object:nil];
   
     if (@available(iOS 11.0, *)) {
-
+        if ([UIScreen mainScreen].isCaptured) {
+                [self capturedChange];
+        }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(capturedChange)
                                                name:UIScreenCapturedDidChangeNotification object:nil];
     }
