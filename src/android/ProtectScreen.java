@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.Bundle;
  
-public class protectScreen extends CordovaPlugin {
+public class ProtectScreen extends CordovaPlugin {
 
   @Override
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
