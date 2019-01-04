@@ -7,7 +7,7 @@
    <platform name="android">
       <config-file parent="/*" target="res/xml/config.xml">
          <feature name="ProtectScreen">
-            <param name="android-package" value="cordova.plugin.protectscreen.ProtectScreen" />
+            <param name="android-package" value="org.protect.screen.ProtectScreen" />
             <param name="onload" value="true" />
          </feature>
       </config-file>
